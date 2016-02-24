@@ -2,9 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Swagger UI</title>
-  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <title>TWC FlightFX API</title>
+  <link rel="icon" type="image/png" href="images/favicon-twc.png" />
   <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -36,7 +35,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
+        url="https://api.wsifusion.com/v1/flightfx/api/v2/api-docs";
       }
 
       hljs.configure({
@@ -49,6 +48,7 @@
       }
       window.swaggerUi = new SwaggerUi({
         url: url,
+        validatorUrl: null,
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
@@ -67,7 +67,9 @@
             window.SwaggerTranslator.translate();
           }
 
-          addApiKeyAuthorization();
+          //addApiKeyAuthorization();
+          addIdPasswordAuth();
+          addIdPasswordQuery();
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -88,7 +90,22 @@
         }
       }
 
-      $('#input_apiKey').change(addApiKeyAuthorization);
+      function addIdPasswordAuth() {
+        var key = ($('#input_apiKey')[0].value);
+        swaggerUi.api.clientAuthorizations.add("header_auth", new SwaggerClient.ApiKeyAuthorization("Authorization", key, "header"));
+      }
+
+      function addIdPasswordQuery() {
+        var id = ($('#input_key')[0].value);
+        var pwd = ($('#input_pwd')[0].value);
+        swaggerUi.api.clientAuthorizations.add("queryKey", new SwaggerClient.ApiKeyAuthorization("id", id, "query"));
+        swaggerUi.api.clientAuthorizations.add("queryPwd", new SwaggerClient.ApiKeyAuthorization("key", pwd, "query"));
+      }
+
+      //$('#input_apiKey').change(addApiKeyAuthorization);
+      $('#input_apiKey').change(addIdPasswordAuth);
+      $('#input_key').change(addIdPasswordQuery);
+      $('#input_pwd').change(addIdPasswordQuery);
 
       // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
       /*
@@ -110,10 +127,15 @@
 <body class="swagger-section">
 <div id='header'>
   <div class="swagger-ui-wrap">
-    <a id="logo" href="http://swagger.io">swagger</a>
+    <a id="logo" href="http://wsi.com" target="_blank"><img src="./images/logo-wsi.png" alt="TWC" width="50" height="35"/></a>
     <form id='api_selector'>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      <!--div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div-->
+      <div class='input'><input placeholder="Authorization" id="input_apiKey" name="apiKey" type="text"/>&nbsp;&nbsp;or</div>
+      <div class='input'>
+        <input placeholder="key" id="input_key" name="key" type="text"/>
+        <input placeholder="password" id="input_pwd" name="password" type="text"/>
+      </div>
       <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
     </form>
   </div>

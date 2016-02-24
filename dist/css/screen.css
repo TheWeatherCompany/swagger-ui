@@ -82,7 +82,7 @@
 .swagger-section pre .vhdl .attribute,
 .swagger-section pre .clojure .attribute,
 .swagger-section pre .coffeescript .property {
-  color: #8888ff;
+  color: #88F;
 }
 .swagger-section pre .keyword,
 .swagger-section pre .id,
@@ -124,11 +124,11 @@
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #f0f0f0;
+  background: #F0F0F0;
 }
 .swagger-section .hljs,
 .swagger-section .hljs-subst {
-  color: #444444;
+  color: #444;
 }
 .swagger-section .hljs-keyword,
 .swagger-section .hljs-attribute,
@@ -143,7 +143,7 @@
 .swagger-section .hljs-bullet,
 .swagger-section .hljs-code,
 .swagger-section .hljs-addition {
-  color: #1f811f;
+  color: #1F811F;
 }
 .swagger-section .hljs-regexp,
 .swagger-section .hljs-symbol,
@@ -152,7 +152,7 @@
 .swagger-section .hljs-link,
 .swagger-section .hljs-selector-attr,
 .swagger-section .hljs-selector-pseudo {
-  color: #bc6060;
+  color: #BC6060;
 }
 .swagger-section .hljs-type,
 .swagger-section .hljs-string,
@@ -173,7 +173,7 @@
   color: #888888;
 }
 .swagger-section .hljs-meta {
-  color: #2b6ea1;
+  color: #2B6EA1;
 }
 .swagger-section .hljs-emphasis {
   font-style: italic;
@@ -184,7 +184,7 @@
 .swagger-section .swagger-ui-wrap {
   line-height: 1;
   font-family: "Droid Sans", sans-serif;
-  max-width: 960px;
+  max-width: 970px;
   margin-left: auto;
   margin-right: auto;
   /* JSONEditor specific styling */
@@ -1296,11 +1296,17 @@
   cursor: pointer;
 }
 .swagger-section #header {
-  background-color: #89bf04;
+  background-color: #006699;
   padding: 14px;
 }
 .swagger-section #input_baseUrl {
-  width: 400px;
+  width: 350px;
+}
+.swagger-section #input_key {
+  width: 75px;
+}
+.swagger-section #input_pwd {
+  width: 75px;
 }
 .swagger-section #api_selector {
   display: block;
@@ -1343,8 +1349,7 @@
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
-  background: transparent url(../images/logo_small.png) no-repeat left center;
-  padding: 20px 0 20px 40px;
+  padding: 20px 0 20px 0;
   color: white;
 }
 .swagger-section #content_message {
