@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title><%= page_title %></title>
+  <title>TWC FlightFX API</title>
   <link rel="icon" type="image/png" href="images/favicon-twc.png" />
   <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -35,7 +35,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url="<%= api_url %>";
+        url="https://api.wsifusion.com/v1/flightfx/api/v2/api-docs";
       }
 
       hljs.configure({
