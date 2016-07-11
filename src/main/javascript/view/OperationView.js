@@ -436,6 +436,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         return this.model.execute(map, opts, this.showCompleteStatus, this.showErrorStatus, this);
       } else {
         this.map = map;
+        this.model.path = this.model.path.split('{?')[0];  // remove the url template from the request url
         return this.model.execute(map, opts, this.showCompleteStatus, this.showErrorStatus, this);
       }
     }
